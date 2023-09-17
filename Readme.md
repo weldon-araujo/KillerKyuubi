@@ -32,7 +32,7 @@
 
 <h1>Descrição do projeto</h1>
 
-Essa ferramenta foi pensada para em auxiliar no processo de Cyber Threat Hunting, é comum que aliado a um processo de Cyber Threat Intell manual seja necessário tomar como parte do Cyber Threat Hunting uma grande quantidade de IOCs muitas vezes derivadas do processo de Cyber Threat Intell com intuiti de enriquecer o Cyber Threat Hunting ou mesmo validação de hipotese, conforme descreve a metodologia <a href="https://www.betaalvereniging.nl/wp-content/uploads/DEF-TaHiTI-Threat-Hunting-Methodology.pdf" target= "_blank" rel="noreferrer noopener nofollow">Tahiti</a>
+Essa ferramenta foi pensada para em auxiliar no processo de Cyber Threat Hunting, é comum que aliado a um processo de Cyber Threat Intell manual seja necessário tomar como parte do Cyber Threat Hunting uma grande quantidade de IOCs muitas vezes derivadas do processo de Cyber Threat Intell com intuiti de enriquecer o Cyber Threat Hunting ou mesmo validação de hipotese, conforme descreve a metodologia [Tahiti](https://www.betaalvereniging.nl/wp-content/uploads/DEF-TaHiTI-Threat-Hunting-Methodology.pdf) 
 
  para validação de determinadas hipóteses, a separação ou organização desses IOCs de maneira manual torna-se um processo um tanto massivo e custoso, em uma primeira versão essa ferramenta se pré dispões em receber todos esses IOCs independentes da forma que estejam organizados e extraia essas informações, a nível de hard code, possobilitando extrair hashes MD5, SHA1 e SHA256, IPs, URLs e URIs.
 
