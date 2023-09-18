@@ -1,10 +1,10 @@
 <h1 align="center" >Hunting IOC</h1>
 
-<p align="center">
+<h4 align="center">
 
   ![Imgur](https://i.imgur.com/HctvKhE.png)
   
-</p>
+</h4>
 
 <h4 align="center">
   
@@ -20,25 +20,17 @@
 
 <h1></h1>
 
-* [Índice](#índice)
-* [Descrição do Projeto](#descrição-do-projeto)
-* [Status do Projeto](#status-do-Projeto)
-* [Funcionalidades e Demonstração da Aplicação](#funcionalidades-e-demonstração-da-aplicação)
-* [Tecnologias utilizadas](#tecnologias-utilizadas)
-* [Pessoas Desenvolvedoras do Projeto](#pessoas-desenvolvedoras)
-* [Conclusão](#conclusão)
-
 <!-- Parte de descrição do projeto -->
 
 <h1>Descrição do projeto</h1>
 
-Essa ferramenta foi pensada para em auxiliar no processo de Cyber Threat Hunting, é comum que aliado a um processo de Cyber Threat Intell manual seja necessário tomar como parte do Cyber Threat Hunting uma grande quantidade de IOCs muitas vezes derivadas do processo de Cyber Threat Intell com intuiti de enriquecer o Cyber Threat Hunting ou mesmo validação de hipotese, conforme descreve a metodologia [Tahiti](https://www.betaalvereniging.nl/wp-content/uploads/DEF-TaHiTI-Threat-Hunting-Methodology.pdf) 
-
- para validação de determinadas hipóteses, a separação ou organização desses IOCs de maneira manual torna-se um processo um tanto massivo e custoso, em uma primeira versão essa ferramenta se pré dispões em receber todos esses IOCs independentes da forma que estejam organizados e extraia essas informações, a nível de hard code, possobilitando extrair hashes MD5, SHA1 e SHA256, IPs, URLs e URIs.
+Essa ferramenta foi pensada para em auxiliar no processo de Cyber Threat Hunting, é comum que aliado a um processo de Cyber Threat Intell manual seja necessário tomar como parte do Cyber Threat Hunting uma grande quantidade de IOCs muitas vezes derivados do processo de Cyber Threat Intell com intuito de enriquecer o Cyber Threat Hunting ou mesmo validar hipoteses, conforme descreve a metodologia de Cyber Threat Hunting <a href="https://www.betaalvereniging.nl/wp-content/uploads/DEF-TaHiTI-Threat-Hunting-Methodology.pdf" target="_blank">Tahiti</a>
+A separação ou organização desses IOCs de maneira manual torna-se um processo um tanto massivo e custoso, essa ferramenta na versão atual se pré dispões em receber todos esses IOCs independentes da forma que estejam organizados e e extrair essas informações, a nível de hard code, possobilitando extrair hashes MD5, SHA1 e SHA256, IPs, URLs e URIs.
 
 Pensando em somar no processo na grande maioria das vezes essas extrações de IOCs tem a finalidade de servirem com insumo de buscas nas plataformas de SIENs, então por hora é possível escolher a forma de saida cobrindo atualmente saidas para o SIEM IBM Qradar ou Graylog.
 
 <h3></h3>
+
 
 <h4 align="center">
   
@@ -53,16 +45,38 @@ Pensando em somar no processo na grande maioria das vezes essas extrações de I
 
 <h1>Modo de uso</h1>
 
-Para visualizar ajuda e verificar os parâmetros necessários.
+* Para visualizar ajuda e verificar os parâmetros necessários ou caso execute o script sem parâmetros.
 
 ```
 python3 HuntingIOC.py -h
 ```
+<h4 align="center">
+  
+![Imgur](https://i.imgur.com/8M0j8N7.png)
 
+</h4>
 
+* Os dados precisam ser copiados e colados a nivel de hard code no objeto "ioc" e após isso pode executar o script, neste exemplo iremos usar os IOCs disponibilizados no repositório do <a href="https://github.com/carbonblack/active_c2_ioc_public/blob/main/cobaltstrike/actor-specific/cobaltstrike_luckymouse_ta428.csv#L1" target="_blank">Carbonblack</a>
+
+<h4 align="center">
+  
+  ![Imgur](https://i.imgur.com/GaxxPyv.png)
+
+</h4>
 
 <!-- Parte de descrição de funcionalidades-->
 
 # :hammer: Funcionalidades do projeto
 
-- `Funcionalidade 1`: descrição da funcionalidade 1
+- `Funcionalidades ` De acordo com o parâmetro escolhido vai ser possível extrair as informações
+
+<h4 align="center">
+
+  ![Imgur](https://i.imgur.com/zXYlmqE.png)
+  
+</h4>
+
+Após esse procedimentos os dados podemo ser utilizados nos processos de Cyber Threat Hunting como prefererir
+
+
+
