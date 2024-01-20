@@ -48,7 +48,7 @@ Pensando em somar no processo na grande maioria das vezes essas extrações de I
 * Para visualizar ajuda e verificar os parâmetros necessários ou caso execute o script sem parâmetros.
 
 ```
-python3 HuntingIOC.py -h
+python3 main.py -h
 ```
 <h4 align="center">
   
@@ -60,7 +60,7 @@ python3 HuntingIOC.py -h
 
 <h4 align="center">
   
-  ![Imgur](https://i.imgur.com/GaxxPyv.png)
+  ![Imgur](https://i.imgur.com/NFDYt6C.png)
 
 </h4>
 
