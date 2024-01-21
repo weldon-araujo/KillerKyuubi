@@ -1,65 +1,34 @@
 import re
+import requests
+import arguments
 import sys
 
-# COLE OS IOCs NA VARIÁVEL ioc ABAIXO:
+args = arguments.arguments_user()
 
-ioc = '''
 
-'''
+def mainargs():
+    if args.target:
+        if args.vt or args.tm or args.li:
+            print("Error: When passing argument '--target' don't use argument --vt, --tm, ou --li")
+            sys.exit(1)
+
+
+mainargs()
+
+
+req = requests.get(args.target)
+out = req.content
+end = str(out)
+
 
 def question():
     siem = input('List format for query in Qradar or Graylog [ Q / G / L ] ')   
     siem = siem.lower() 
     return siem
 
-def help():
-    print('=' * 70)
-    print('Missing required parameter')
-    print('User mode:')
-    print('')
-    print(f'{sys.argv[0]} [--url, --uri, --ip, --md5, --sha1, --sha256 ]')
-    print('=' * 70)
-    
-def url(ioct):
-    ioctout = re.findall(r'\b(?:[a-zA-Z0-9-]+\.){1,}[a-zA-Z]{2,}\b', ioct)
-    liste = []
-    resp = question()
-    print('')
-    if resp == 'q':
-        for url in set(ioctout):
-            liste.append(url)
-        print(liste)
-    elif resp == 'g':
-        for url in set(ioctout):
-            liste.append(url)
-        now = str(liste)
-        print(now.strip('[]').replace(',',' OR').replace("'",''))
-    else:                                           
-        for url in set(ioctout):
-            print(url)
-       
-        
-def uri(ioct):
-    ioctout = re.findall(r'\/[^\s]+', ioct)
-    liste = []
-    resp = question()
-    print('')
-    if resp == 'q':
-        for uri in set(ioctout):
-            liste.append(uri)
-        print(liste)
-    elif resp == 'g':
-        for uri in set(ioctout):
-            liste.append(uri)
-        now = str(liste)
-        print(now.strip('[]').replace(',',' OR').replace("'",''))
-    else:
-        for uri in set(ioctout):
-            print(uri)
-        
-
-def ip(ioct):
-    ioctout = re.findall(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}', ioct)
+      
+def ip(out):
+    ioctout = re.findall(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}', out)
     liste = []
     resp = question()
     print('')
@@ -76,9 +45,45 @@ def ip(ioct):
         for ip in set(ioctout):
             print(ip)
 
+def domain(domain):
+    ioctout = re.findall(r'\b(?:[a-zA-Z0-9-]+\.){1,}[a-zA-Z]{2,}\b', out)
+    liste = []
+    resp = question()
+    print('')
+    if resp == 'q':
+        for url in set(ioctout):
+            liste.append(url)
+        print(liste)
+    elif resp == 'g':
+        for url in set(ioctout):
+            liste.append(url)
+        now = str(liste)
+        print(now.strip('[]').replace(',',' OR').replace("'",''))
+    else:                                           
+        for url in set(ioctout):
+            print(url)
 
-def md5(ioct):
-    ioctout = re.findall(r'[0-9a-f]{32}', ioct)
+def uri(out):
+    ioctout = re.findall(r'\/[^\s]+', out)
+    liste = []
+    resp = question()
+    print('')
+    if resp == 'q':
+        for uri in set(ioctout):
+            liste.append(uri)
+        print(liste)
+    elif resp == 'g':
+        for uri in set(ioctout):
+            liste.append(uri)
+        now = str(liste)
+        print(now.strip('[]').replace(',',' OR').replace("'",''))
+    else:
+        for uri in set(ioctout):
+            print(uri)
+
+
+def md5(out):
+    ioctout = re.findall(r'[0-9a-f]{32}', out)
     liste = []
     resp = question()
     print('')
@@ -96,8 +101,8 @@ def md5(ioct):
             print(md5)
     
 
-def sha1(ioct):
-    ioctout = re.findall(r'[0-9a-f]{40}', ioct)
+def sha1(out):
+    ioctout = re.findall(r'[0-9a-f]{40}', out)
     liste = []
     resp = question()
     print('')
@@ -115,8 +120,8 @@ def sha1(ioct):
             print(sha1)
 
 
-def sha256(ioct):
-    ioctout = re.findall(r'\b[0-9a-fA-F]{64}\b', ioct)
+def sha256(out):
+    ioctout = re.findall(r'\b[0-9a-fA-F]{64}\b', out)
     liste = []
     resp = question()
     print('')
@@ -133,30 +138,36 @@ def sha256(ioct):
         for sha256 in set(ioctout):
             print(sha256)
 
-    def all():
-        pass 
-
+    def li():
+        pass
     
+    def vt():
+        pass
+
+    def tm():
+        pass
+
+     
 def test_option():
-    if (len(sys.argv)) == 1:
-        return help()
-    elif sys.argv[1] == '--ip':
-        return ip(ioc)
-    elif sys.argv[1] == '--url':
-        return url(ioc.replace('[','').replace(']',''))
-    elif sys.argv[1] == '--uri':
-        return uri(ioc.replace('[','').replace(']',''))
-    elif sys.argv[1] == '--md5':
-        return md5(ioc)
-    elif sys.argv[1] == '--sha1':
-        return sha1(ioc)
-    elif sys.argv[1] == '--sha256':
-        return sha256(ioc)
-    elif sys.argv[1] == '--all':
-        return all(ioc)
-    elif sys.argv[1] == '--help':
-        return help()
+    if args.ip:
+        return ip(end)
+        
+    elif args.domain:
+        return domain(end)
+    
+    elif args.uri:
+        return uri(end)
+
+    elif args.md5:
+        return md5(end)
+    
+    elif args.sha1:
+        return sha1(end)
+    
+    elif args.sha256:
+        return sha256(end)
+
     else:
-        return help()
+        return args.help()
 
 test_option()
