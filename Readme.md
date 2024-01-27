@@ -50,11 +50,6 @@ Pensando em somar no processo na grande maioria das vezes essas extrações de I
 ```
 python3 main.py -h
 ```
-<h4 align="center">
-  
-![Imgur](https://i.imgur.com/8M0j8N7.png)
-
-</h4>
 
 * Os dados precisam ser copiados e colados a nivel de hard code no objeto "ioc" e após isso pode executar o script, neste exemplo iremos usar os IOCs disponibilizados no repositório do <a href="https://github.com/carbonblack/active_c2_ioc_public/blob/main/cobaltstrike/actor-specific/cobaltstrike_luckymouse_ta428.csv#L1" target="_blank">Carbonblack</a>
 
