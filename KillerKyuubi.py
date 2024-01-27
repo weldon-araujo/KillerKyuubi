@@ -3,6 +3,7 @@ import requests
 import arguments
 import sys
 
+
 args = arguments.arguments_user()
 
 
@@ -22,7 +23,7 @@ end = str(out)
 
 
 def question():
-    siem = input('List format for query in Qradar or Graylog [ Q / G / L ] ')   
+    siem = input('Standard output or list output ? [ L / D ] ')   
     siem = siem.lower() 
     return siem
 
@@ -32,51 +33,38 @@ def ip(out):
     liste = []
     resp = question()
     print('')
-    if resp == 'q':
+    if resp == 'l':
         for ip in set(ioctout):
             liste.append(ip)
         print(ioctout)
-    elif resp == 'g':
-        for ip in set(ioctout):
-            liste.append(ip)
-        now = str(liste)
-        print(now.strip('[]').replace(',',' OR').replace("'",''))
     else:
         for ip in set(ioctout):
             print(ip)
 
-def domain(domain):
+
+def domain(out):
     ioctout = re.findall(r'\b(?:[a-zA-Z0-9-]+\.){1,}[a-zA-Z]{2,}\b', out)
     liste = []
     resp = question()
     print('')
-    if resp == 'q':
+    if resp == 'l':
         for url in set(ioctout):
             liste.append(url)
         print(liste)
-    elif resp == 'g':
-        for url in set(ioctout):
-            liste.append(url)
-        now = str(liste)
-        print(now.strip('[]').replace(',',' OR').replace("'",''))
     else:                                           
         for url in set(ioctout):
             print(url)
+
 
 def uri(out):
     ioctout = re.findall(r'\/[^\s]+', out)
     liste = []
     resp = question()
     print('')
-    if resp == 'q':
+    if resp == 'l':
         for uri in set(ioctout):
             liste.append(uri)
         print(liste)
-    elif resp == 'g':
-        for uri in set(ioctout):
-            liste.append(uri)
-        now = str(liste)
-        print(now.strip('[]').replace(',',' OR').replace("'",''))
     else:
         for uri in set(ioctout):
             print(uri)
@@ -87,15 +75,10 @@ def md5(out):
     liste = []
     resp = question()
     print('')
-    if resp == 'q':
+    if resp == 'l':
         for md5 in set(ioctout):
             liste.append(md5)
         print(ioctout)
-    elif resp == 'g':
-        for md5 in set(ioctout):
-            liste.append(md5)
-        now = str(liste)
-        print(now.strip('[]').replace(',',' OR').replace("'",''))
     else:
         for md5 in set(ioctout):
             print(md5)
@@ -106,15 +89,10 @@ def sha1(out):
     liste = []
     resp = question()
     print('')
-    if resp == 'q':
+    if resp == 'l':
         for sha1 in set(ioctout):
             liste.append(sha1)
         print(ioctout)
-    elif resp == 'g':
-        for sha1 in set(ioctout):
-            liste.append(sha1)
-        now = str(liste)
-        print(now.strip('[]').replace(',',' OR').replace("'",''))
     else:
         for sha1 in set(ioctout):
             print(sha1)
@@ -125,18 +103,14 @@ def sha256(out):
     liste = []
     resp = question()
     print('')
-    if resp == 'q':
+    if resp == 'l':
         for sha256 in set(ioctout):
             liste.append(sha256)
         print(ioctout)
-    elif resp == 'g':
-        for sha256 in set(ioctout):
-            liste.append(sha256)
-        now = str(liste)
-        print(now.strip('[]').replace(',',' OR').replace("'",''))
     else:
         for sha256 in set(ioctout):
             print(sha256)
+
 
     def li():
         pass
@@ -169,5 +143,6 @@ def test_option():
 
     else:
         return args.help()
+
 
 test_option()
