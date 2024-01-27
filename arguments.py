@@ -23,4 +23,4 @@ def arguments_user():
     return parser.parse_args()
 
 if __name__ == "__main__":
-    print('Error! this not main script, execute script main.py')
+    print('Error! this not main script, execute script KillerKyuubi.py')
